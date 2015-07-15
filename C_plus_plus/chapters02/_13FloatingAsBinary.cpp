@@ -12,5 +12,6 @@ int main(int argc,char* argv[]){
     unsigned char* cp = reinterpret_cast<unsigned char*>(&d);
     for(int i=sizeof(double);i>0;i--){
         printBinary(cp[i]);
+        cout << endl;
     }
 }
