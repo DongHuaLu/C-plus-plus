@@ -1,4 +1,4 @@
-// 定义一个CStash
+// 定义一个CStash C风格的stash
 
 typedef struct CStashTag{
 	int size; // 单个的大小

@@ -1,5 +1,5 @@
 */comp/
 /Debug/
 *.exe
-.cprobject
+.cproject
 .setting/
