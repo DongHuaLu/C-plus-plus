@@ -4,9 +4,10 @@
  *  Created on: 2015年7月18日
  *      Author: Administrator
  */
+#include <iostream>
+
 #include "_01CStash.h"
 #include "_02CppStash.h"
-#include <iostream>
 using namespace std;
 
 struct A {

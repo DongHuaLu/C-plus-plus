@@ -6,6 +6,7 @@
  */
 
 #include "_04CppStack.h"
+
 #include "../require.h"
 using namespace std;
 
