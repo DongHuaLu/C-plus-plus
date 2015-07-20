@@ -16,6 +16,7 @@ private:
 	int i;
 public:
 	void initialize();
+	// 声明友元函数,g可以访问X中的private变量
 	friend void g(X*, int);
 	friend void Y::f(X*);
 	friend struct Z;

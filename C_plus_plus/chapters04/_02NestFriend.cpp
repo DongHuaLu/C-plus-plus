@@ -8,20 +8,21 @@
 #include <cstring>
 using namespace std;
 const int sz = 20;
-
+struct Pointer;
 struct Holder {
 private:
 	int a[sz];
 public:
 	void initialize();
-	struct Pointer;
-	//friend struct Pointer;
-	struct Pointer {
+	// 把Pointer当做Holder的友元,这样Pointer中可以直接访问Holder中非public的成员
+	friend Pointer;
+};
+struct Pointer {
 	private:
 		Holder* h;
 		int* p;
 	public:
-		void initialize(Holder* h);
+		void initialize(Holder* hp);
 		void next();
 		void previous();
 		void top();
@@ -29,46 +30,45 @@ public:
 		int read();
 		void set(int i);
 	};
-};
 
 void Holder::initialize() {
 	memset(a, 0, sz * sizeof(int));
 }
 
-void Holder::Pointer::initialize(Holder* h) {
-	this->h = h;
-	this->p = h->a;
+void Pointer::initialize(Holder* hp) {
+	this->h = hp;
+	this->p = hp->a;
 }
 
-void Holder::Pointer::next() {
+void Pointer::next() {
 	if (p < &(h->a[sz - 1]))
 		p++;
 }
 
-void Holder::Pointer::previous() {
+void Pointer::previous() {
 	if (p > &(h->a[0]))
 		p--;
 }
 
-void Holder::Pointer::top() {
+void Pointer::top() {
 	p = &(h->a[0]);
 }
 
-void Holder::Pointer::end() {
+void Pointer::end() {
 	p = &(h->a[sz - 1]);
 }
 
-int Holder::Pointer::read() {
+int Pointer::read() {
 	return *p;
 }
 
-void Holder::Pointer::set(int i) {
+void Pointer::set(int i) {
 	*p = i;
 }
 
 int main() {
 	Holder h;
-	Holder::Pointer p1, p2;
+	Pointer p1, p2;
 	int i;
 
 	h.initialize();
